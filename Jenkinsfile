@@ -15,7 +15,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                    docker compose build
+                    docker compose build \
+                    -t $IMAGE_NAME:$BUILD_NUMBER \
+                    -t $IMAGE_NAME:latest
                 '''
             }
         }
