@@ -15,7 +15,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                    docker compose build 
+                    docker compose build
+                    docker tag aquyth/flask-mysql:latest \
+                        aquyth/flask-mysql:$BUILD_NUMBER
+
                 '''
             }
         }
@@ -23,7 +26,7 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 sh '''
-                    docker compose up -d $IMAGE_NAME:latest
+                    docker compose up -d 
                 '''
             }
         }
