@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 sh '''
-                    docker compose up -d
+                    docker compose up -d --name $IMAGE_NAME:$BUILD_NUMBER
                 '''
             }
         }
