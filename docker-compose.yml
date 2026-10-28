@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mysql:8.4
-    container_name: tanmay
+    container_name: sarthak
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpass123
@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: tanmay123
+    container_name: sarthak_flask
     restart: always
     ports:
       - "5000:5000"
