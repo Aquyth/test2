@@ -15,9 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                    docker compose build \
-                    -t $IMAGE_NAME:$BUILD_NUMBER \
-                    -t $IMAGE_NAME:latest
+                    docker compose build --name $IMAGE_NAME:$BUILD_NUMBER
                 '''
             }
         }
@@ -25,7 +23,7 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 sh '''
-                    docker compose up -d --name $IMAGE_NAME:$BUILD_NUMBER
+                    docker compose up -d $IMAGE_NAME:$BUILD_NUMBER
                 '''
             }
         }
